@@ -1,0 +1,185 @@
+
+package maki;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+public class FXMLDocumentController implements Initializable {
+    
+     ObservableList<String> Car = FXCollections.observableArrayList("BMW", "D4D", "BENNS", "MINI COOPER", "HONDA FIT");
+    @FXML
+    private TextField NumPlate;
+    @FXML
+    private TextField EngNum;
+    @FXML
+    private TextField YearOfManu;
+    @FXML
+    private TextField OdNum;
+    @FXML
+    private TextArea NumPlateArea;
+    @FXML
+    private TextArea CarMod;
+    @FXML
+    private TextArea EngNumArea;
+    @FXML
+    private TextArea YearOfManuArea;
+    @FXML
+    private TextArea  OdNumArea;
+    @FXML
+    private Button Insert;
+    @FXML
+    private ComboBox<String> CarsList;
+    @FXML
+    private Button EXIT;
+    @FXML
+    private void Insertion(ActionEvent event) throws IOException{
+      File myFile= new File("Lipholo.txt"); 
+      myFile.createNewFile();
+      try
+          (FileWriter write = new FileWriter("Lipholo.txt",true)){
+      try{
+       String num = NumPlate.getText();
+       String num1 = EngNum.getText();
+       String num2 = OdNum.getText();
+       
+       int num3 = Integer.parseInt(YearOfManu.getText());
+       if(NumPlate.getText().isEmpty()&& EngNum.getText().isEmpty()&&
+        YearOfManu.getText().isEmpty()&& OdNum.getText().isEmpty()){ 
+           System.out.println("BBBBBBBBBBBB");
+       }
+       else {
+           NumPlateArea.appendText("" +num+"\n");
+           EngNumArea.appendText("" +num1+"\n");
+           YearOfManuArea.appendText("" +num3+"\n");
+           OdNumArea.appendText("" +num2+"\n");
+           Cars();
+       }
+       NumPlate.setText(null);
+       YearOfManu.setText(null);
+       EngNum.setText(null);
+       OdNum.setText(null);
+       CarsList.setValue(null);
+       
+       write.write("NumPlate is "+num+"\n");
+       write.write("EngNumArea is "+num1+"\n");
+       write.write("YearOfManu "+num3+"\n");
+       write.write("OdoMeter Num "+num2+"\n");
+    }catch(Exception e){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText("Enter only integers");
+        if(alert.showAndWait().get()==ButtonType.OK);
+    }
+    }
+    }
+    public void Cars(){
+        if("BMW".equals(CarsList.getValue())){
+          CarMod.appendText("BMW"+"\n"); 
+        }
+        else if("D4D".equals(CarsList.getValue())){
+          CarMod.appendText("D4D"+"\n");  
+        }
+        else if("BENNS".equals(CarsList.getValue())){
+          CarMod.appendText("BENNS"+"\n");  
+        }
+        else if("MINI COOPER".equals(CarsList.getValue())){
+          CarMod.appendText("MINI COOPER"+"\n");  
+        }
+        else if("HONDA FIT".equals(CarsList.getValue())){
+          CarMod.appendText("HONDA FIT"+"\n");  
+        }
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+         CarsList.setItems(Car);
+    }    
+
+    @FXML
+    private void EXITT(ActionEvent event) {
+         System.exit(0); 
+    }
+    
+}
+NumPlate is 78
+EngNumArea is 78
+YearOfManu 1999
+OdoMeter Num 88
+NumPlate is 8
+EngNumArea is 667
+YearOfManu 99
+OdoMeter Num 799
+NumPlate is 68
+EngNumArea is 36
+YearOfManu 56
+OdoMeter Num 787
+NumPlate is 130
+EngNumArea is 12
+YearOfManu 22
+OdoMeter Num 2332
+NumPlate is 31
+EngNumArea is 32
+YearOfManu 31
+OdoMeter Num 113
+NumPlate is 33
+EngNumArea is 44
+YearOfManu 24
+OdoMeter Num 42
+NumPlate is 42
+EngNumArea is 44
+YearOfManu 54
+OdoMeter Num 14
+NumPlate is 564
+EngNumArea is 344444
+YearOfManu 55
+OdoMeter Num 34
+NumPlate is 44
+EngNumArea is 44
+YearOfManu 556
+OdoMeter Num 656
+NumPlate is 4542
+EngNumArea is 34
+YearOfManu 52
+OdoMeter Num 54
+NumPlate is 25
+EngNumArea is 55
+YearOfManu 52
+OdoMeter Num 223
+NumPlate is 34
+EngNumArea is 33
+YearOfManu 43
+OdoMeter Num 43333
+NumPlate is 55
+EngNumArea is 46
+YearOfManu 566
+OdoMeter Num 64
+NumPlate is 55
+EngNumArea is 6
+YearOfManu 8
+OdoMeter Num 77
+NumPlate is 90
+EngNumArea is 89
+YearOfManu 799
+OdoMeter Num 900
+NumPlate is 89
+EngNumArea is 87
+YearOfManu 87
+OdoMeter Num 78
+NumPlate is oo
+EngNumArea is 879
+YearOfManu 79868
+OdoMeter Num 89
